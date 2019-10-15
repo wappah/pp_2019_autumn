@@ -42,19 +42,15 @@ before_install:
 - eval "${MATRIX_EVAL}"
 
 install:
-- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
-      cd
-      mkdir mpi
-      mkdir mpi/download
-      cd mpi/download
-      mv ../Downloads/openmpi-2.0.2.tar.bz2  .
-      tar -xzvf openmpi-2.0.2.tar.bz2
-      cd openmpi-2.0.2
-      ./configure --prefix=/Users/thiebaut/mpi/
-      make all install
-      PATH=$PATH:/Users/thiebaut/mpi/bin/
-      cd
-      source .bash_profile
+- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then \
+      wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.2.tar.bz2 \
+      tar xf openmpi-4.0.2.tar.bz2 \
+      cd openmpi-4.0.2 \
+      ./configure --prefix=/opt/openmpi 2>&1 | tee config.out \
+      make -j 4 2>&1 | tee make.out \
+      sudo make install 2>&1 | tee install.out \
+      export PATH=/opt/openmpi/bin:$PATH \
+      ompi_info \
   fi
 - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install libomp; fi
 - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install tbb; fi
