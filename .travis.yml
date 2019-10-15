@@ -42,7 +42,7 @@ before_install:
 - eval "${MATRIX_EVAL}"
 
 install:
-- if [[ $TRAVIS_OS_NAME == 'osx' ]]
+- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
       wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.2.tar.bz2
       tar xf openmpi-4.0.2.tar.bz2
       cd openmpi-4.0.2
