@@ -42,7 +42,7 @@ before_install:
 - eval "${MATRIX_EVAL}"
 
 install:
-- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install open-mpi; fi
+- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install openmpi; fi
 - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install libomp; fi
 - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install tbb; fi
 
