@@ -30,12 +30,12 @@ int GetCountDiffSimb(char* Str1, char* Str2) {
   char* TempStr2 = new char[Step + 1];
 
   if (ProcRank == 0) {
-	if (Step > 0) {
-	  for (int Proc = 1; Proc < ProcSize; Proc++) {
-		MPI_Send(&Str1[Proc * Step + Remainder], Step, MPI_CHAR, Proc, 0, MPI_COMM_WORLD);
-		MPI_Send(&Str2[Proc * Step + Remainder], Step, MPI_CHAR, Proc, 1, MPI_COMM_WORLD);
-	  }
-	}
+    if (Step > 0) {
+      for (int Proc = 1; Proc < ProcSize; Proc++) {
+	MPI_Send(&Str1[Proc * Step + Remainder], Step, MPI_CHAR, Proc, 0, MPI_COMM_WORLD);
+	MPI_Send(&Str2[Proc * Step + Remainder], Step, MPI_CHAR, Proc, 1, MPI_COMM_WORLD);
+      }
+    }
   }
 
   if (ProcRank == 0) {
@@ -89,57 +89,3 @@ int GetRandomStr(char* Str, int StrSize) {
 	Str[i] = Arr[rand() % (sizeof(Arr) - 1)];
   Str[StrSize] = 0;
 }
-
-	/*
-
-	if (ProcNum % 2 != 0)
-	{
-		std::cout << "Error.";
-		return MPI_Abort(MPI_COMM_WORLD, 1);
-	}
-
-	if (ProcRank == 0)
-	{
-		double val = 3.14;
-		MPI_Send(&val, 1, MPI_DOUBLE, 1, 0, MPI_COMM_WORLD);
-		std::cout << "ProcRank " << ProcRank << " send value " << val << " to ProcRank 1";
-	}
-	else
-	{
-		double val;
-		MPI_Status status;
-		res = MPI_Recv(&val, 1, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD, &status);
-		if (res == MPI_SUCCESS)
-			std::cout << "ProcRank " << ProcRank << " received value " << val; //<< " from ProcRank " << ProcRank + 1;
-		else
-			std::cout << "ProcRank " << ProcRank << " did not successfully received a value. ";
-	}
-	*/
-
-	/*
-	double val = -1.0 * ProcRank;
-	MPI_Send(&val, 1, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
-	std::cout << "ProcRank " << ProcRank << " send value " << val << " to ProcRank 0" << "\n";
-
-	if (ProcRank == 0)
-	{
-		int i;
-		double val, sum = 0;
-		MPI_Status status;
-
-		for (i = 0; i != ProcNum; ++i)
-		{
-			res = MPI_Recv(&val, 1, MPI_DOUBLE, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
-			if (res == MPI_SUCCESS)
-			{
-				std::cout << "ProcRank " << ProcRank << " received value " << val << "\n";
-				sum += val;
-			}
-			else
-				MPI_Abort(MPI_COMM_WORLD, 1);
-
-			std::cout << "The total is "<<sum<<"\n";
-		}
-	}
-	*/
-	//MPI_Finalize();
