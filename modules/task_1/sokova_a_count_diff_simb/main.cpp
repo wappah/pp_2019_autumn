@@ -20,6 +20,7 @@ TEST(Count_Diff_Simb_MPI, count_diff_char_in_identical_str) {
 	ASSERT_EQ(ExpectedResult, RealResult);
   }
 }
+
 TEST(Count_Diff_Simb_MPI, count_diff_char_in_diff_size_str) {
   int ProcRank;
   MPI_Comm_rank(MPI_COMM_WORLD, &ProcRank);
@@ -36,6 +37,7 @@ TEST(Count_Diff_Simb_MPI, count_diff_char_in_diff_size_str) {
   	ASSERT_EQ(ExpectedResult, RealResult);
   }
 }
+
 TEST(Count_Diff_Simb_MPI, count_diff_char_in_same_size_expected_result_even) {
   int ProcRank;
   MPI_Comm_rank(MPI_COMM_WORLD, &ProcRank);
@@ -52,12 +54,13 @@ TEST(Count_Diff_Simb_MPI, count_diff_char_in_same_size_expected_result_even) {
 	ASSERT_EQ(ExpectedResult, RealResult);
   }
 }
+
 TEST(Count_Diff_Simb_MPI, count_diff_char_in_same_size_expected_result_odd) {
   int ProcRank;
   MPI_Comm_rank(MPI_COMM_WORLD, &ProcRank);
 
   char Str1[] = "abcdefghik";
-  char Str2[] = "xxcxexxxix"; 
+  char Str2[] = "xxcxexxxix";
 
   int ExpectedResult = 7;
 
@@ -68,6 +71,7 @@ TEST(Count_Diff_Simb_MPI, count_diff_char_in_same_size_expected_result_odd) {
 	ASSERT_EQ(ExpectedResult, RealResult);
   }
 }
+
 TEST(Count_Diff_Char_MPI, get_random_str) {
   int Size = 17;
   char* Str = new char[Size];
