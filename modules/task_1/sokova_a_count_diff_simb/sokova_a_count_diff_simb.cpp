@@ -1,8 +1,8 @@
 // Copyright 2019 Sokova Anastasia
-#include <random>
 #include <iostream>
 #include <stdio.h>
 #include <cstring>
+#include <random>
 #include "../../../modules/task_1/sokova_a_count_diff_simb/sokova_a_count_diff_simb.h";
 
 int GetCountDiffSimb(char* Str1, char* Str2) {
