@@ -32,8 +32,8 @@ int GetCountDiffSimb(char* Str1, char* Str2) {
   if (ProcRank == 0) {
     if (Step > 0) {
       for (int Proc = 1; Proc < ProcSize; Proc++) {
-	MPI_Send(&Str1[Proc * Step + Remainder], Step, MPI_CHAR, Proc, 0, MPI_COMM_WORLD);
-	MPI_Send(&Str2[Proc * Step + Remainder], Step, MPI_CHAR, Proc, 1, MPI_COMM_WORLD);
+        MPI_Send(&Str1[Proc * Step + Remainder], Step, MPI_CHAR, Proc, 0, MPI_COMM_WORLD);
+        MPI_Send(&Str2[Proc * Step + Remainder], Step, MPI_CHAR, Proc, 1, MPI_COMM_WORLD);
       }
     }
   }
