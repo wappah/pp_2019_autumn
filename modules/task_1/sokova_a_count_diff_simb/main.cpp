@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <stdio.h>
 #include <string>
-#include "../../../modules/task_1/sokova_a_count_diff_simb/sokova_a_count_diff_simb.h";
+#include "../../../modules/task_1/sokova_a_count_diff_simb/sokova_a_count_diff_simb.h"
 TEST(Count_Diff_Simb_MPI, count_diff_char_in_identical_str) {
   int ProcRank;
   MPI_Comm_rank(MPI_COMM_WORLD, &ProcRank);
